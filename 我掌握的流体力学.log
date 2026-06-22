@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.24)  21 JUN 2026 22:17
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.24)  22 JUN 2026 17:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -796,11 +796,10 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip89
 )
-\c@defn=\count365
+\c@definition=\count365
 \c@add=\count366
 \c@lemma=\count367
-\c@proposition=\count368
-\c@example=\count369
+\c@example=\count368
 ) (./我掌握的流体力学.aux (./config/cover.aux) (./chap1/chap.aux))
 \openout1 = `我掌握的流体力学.aux'.
 
@@ -1080,46 +1079,48 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
  (./chap1/chap.tex
 一、
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 12.00128pt on input line 76.
+(Font)              scaled to size 12.00128pt on input line 45.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 8.40088pt on input line 76.
+(Font)              scaled to size 8.40088pt on input line 45.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/b/n' will be
-(Font)              scaled to size 6.00064pt on input line 76.
+(Font)              scaled to size 6.00064pt on input line 45.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 11.99872pt on input line 76.
+(Font)              scaled to size 11.99872pt on input line 45.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 8.3991pt on input line 76.
+(Font)              scaled to size 8.3991pt on input line 45.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/b/n' will be
-(Font)              scaled to size 5.99936pt on input line 76.
+(Font)              scaled to size 5.99936pt on input line 45.
 [1
 
 
 
-] [2]) [3] (./我掌握的流体力学.aux (./config/cover.aux) (./chap1/chap.aux))
+] [2] [3]
+
+LaTeX Warning: Reference `sec:conservation' on page 4 undefined on input line 251.
+
+[4]
+
+LaTeX Warning: Reference `sec:conservation' on page 5 undefined on input line 301.
+
+) [5] (./我掌握的流体力学.aux (./config/cover.aux) (./chap1/chap.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/07/14>
  ***********
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
-
-Package rerunfilecheck Warning: File `我掌握的流体力学.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `我掌握的流体力学.out':
-(rerunfilecheck)             Before: D914B5A2E83C451256DC02800552E70C;1127
-(rerunfilecheck)             After:  BC5AF6072F1C9F35B48EECB2634FC80F;892.
+Package rerunfilecheck Info: File `我掌握的流体力学.out' has not changed.
+(rerunfilecheck)             Checksum: D054C8607AD8199D531FFEB7288B9D67;653.
  ) 
 Here is how much of TeX's memory you used:
- 35527 strings out of 476691
- 738420 string characters out of 5799507
- 1944842 words of memory out of 5000000
- 56986 multiletter control sequences out of 15000+600000
- 565326 words of font info for 99 fonts, out of 8000000 for 9000
+ 35594 strings out of 476691
+ 741496 string characters out of 5799507
+ 1950842 words of memory out of 5000000
+ 57051 multiletter control sequences out of 15000+600000
+ 565342 words of font info for 101 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 93i,6n,114p,541b,346s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,11n,114p,541b,544s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 我掌握的流体力学.pdf (5 pages).
+Output written on 我掌握的流体力学.pdf (7 pages).

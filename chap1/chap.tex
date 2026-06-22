@@ -31,10 +31,78 @@
 
 运动学基本概念：连续介质假设，流体微团（流体质点），欧拉描述，拉格朗日描述，
 物质导数（随体导数），当地导数，对流项，流线，迹线（轨迹线），脉线（染色线）。
+\subsection{应力张量} 
+在连续介质力学中将流体视为连续填充空间的物质。此时，相邻流体部分之间的相互作用力通过假想截面上的面力分布来描述。
+
+考虑流体内部一个以单位法向量 $\mathbf{n}$ 的假想面元 $\mathrm{d}S$。
+令 $\mathrm{d}\mathbf{f}$ 为该面元两侧流体之间的相互作用力，可写成：
+\begin{equation}
+\mathrm{d}\mathbf{f} = \mathbf{t}(\mathbf{n}) \, \mathrm{d}S,
+\end{equation}
+其中 $\mathbf{t}(\mathbf{n})$ 称为应力矢量（或称牵引力矢量），它依赖于该点处面元的空间取向 $\mathbf{n}$。
+
+\begin{principle}[柯西应力原理]
+    应力矢量 $\mathbf{t}(\mathbf{n})$ 与法向量 $\mathbf{n}$ 之间的关系是线性的。存在一个二阶张量 $\boldsymbol{\sigma}$，使得：
+    \begin{equation}
+    \mathbf{t}(\mathbf{n}) = \boldsymbol{\sigma} \cdot \mathbf{n}\quad \text{或} \quad t_i(\mathbf{n}) = \sigma_{ij} n_j
+     \end{equation}
+     其中 $\boldsymbol{\sigma}$ 即为应力张量，其分量 $\sigma_{ij}$ 表示作用在法向为 $j$ 的面元上、沿 $i$ 方向的应力分量。
+\end{principle}
+\begin{proof}[量级分析]
+取一个以 $O$ 为顶点、斜面法向为 $\mathbf{n}$ 的微小四面体，其三个坐标面分别垂直于
+ $x_1, x_2, x_3$ 轴，面积分别为斜面面积\(\mathrm{d}S\)乘$\mathbf{n}$ 的分量 $n_1, n_2, n_3$。令四面体的特征尺度为 $h$，则体积 $\propto h^3$，面积 $\propto h^2$。
+ 当 $h \to 0$ 时，体积力（如重力、惯性力）的量级为 $O(h^3)$，远小于面力的量级 $O(h^2)$，
+ 因此体积力在极限下不影响平衡，四个面上的面力之和为零。
+ \[
+\mathbf{t}(\mathbf{n}) \, \mathrm{d}S + \mathbf{t}(-\mathbf{e}_1) \, \mathrm{d}S_1 + \mathbf{t}(-\mathbf{e}_2) \, \mathrm{d}S_2 + \mathbf{t}(-\mathbf{e}_3) \, \mathrm{d}S_3 = \mathbf{0}
+\]
+约去公共因子 \(\mathrm{d}S\)，得到
+\[
+\mathbf{t}(\mathbf{n}) = n_1 \mathbf{t}(\mathbf{e}_1) + n_2 \mathbf{t}(\mathbf{e}_2) + n_3 \mathbf{t}(\mathbf{e}_3)
+\]
+\end{proof}
+
+\begin{proposition}
+在\textcolor{red}{流体微元上的合力矩为零}条件下，应力张量是对称的：
+\begin{equation}
+\sigma_{ij} = \sigma_{ji}
+\end{equation}
+\begin{proof}[量级分析]
+考虑一个边长分别为 \(\mathrm{d}x, \mathrm{d}y, \mathrm{d}z\) 的微小立方体流体微元。
+对绕 \(z\) 轴的力矩，仅有切向分量 \(\sigma_{xy}\) 和 \(\sigma_{yx}\) 产生净贡献。
+作用于与 \(x\) 轴垂直的两个面上的 \(\sigma_{xy}\) 构成一对反向力偶，其合力矩为；
+作用于与 \(y\) 轴垂直的两个面上的 \(\sigma_{yx}\) 构成一对正向力偶，其合力矩为。
+因此绕 \(z\) 轴的净力矩为
+\[
+M_z = (\sigma_{yx}-\sigma_{xy}) \, \mathrm{d}x \, \mathrm{d}y \, \mathrm{d}z,
+\]
+其量级为 \(O(h^3)\)。立方体的转动惯量 \(I \propto \rho h^5\)，角加速度 \(\dot{\omega}\) 的量级至多为 \(O(1)\)，
+故惯性力矩 \(I\dot{\omega}\) 的量级为 \(O(h^5)\)。当微元尺寸趋于零时惯性力矩可忽略。为保持力矩平衡
+\[
+M_z = 0 \quad \Rightarrow \quad \sigma_{xy} = \sigma_{yx}
+\]
+\end{proof}
+\end{proposition}
+\begin{proposition}
+    应力张量 $\boldsymbol{\sigma}$ 可以唯一地分解为一个球量部分（各项同性的静水压力）和一个偏量部分（流体黏性引起的各向异性应力）：
+\begin{equation}\label{eq:stress_composition}
+\boldsymbol{\sigma} = -p \mathbf{I} + \boldsymbol{\sigma}'\quad \text{或} \quad \sigma_{ij} = -p \delta_{ij} + \sigma'_{ij}
+\end{equation}
+其中：
+\begin{itemize}
+    \item $p = \frac{1}{3}\mathrm{tr}(\boldsymbol{\sigma}) = \frac{1}{3}\sigma_{kk}$ ，代表静水压力（压应力为正）；
+    \item $\boldsymbol{\sigma}'$ 黏性应力张量，无迹 $\mathrm{tr}(\boldsymbol{\sigma}') = 0$，代表由流体黏性引起的各向异性应力，导致流体发生剪切变形；
+    \item $\mathbf{I}$ 为单位二阶张量（克罗内克符号 $\delta_{ij}$）。
+\end{itemize}
+\end{proposition}
+\begin{note}
+    可以发现流体力学的应力张量是在流体静力学的基础上修正出的。
+\end{note}
+
 \subsection{流体的控制方程} 
 \paragraph{连续性方程（质量守恒方程）}
 
-考虑流体中任意一个\textcolor{red}{固定的体积} $\mathcal{V}$，其边界为封闭曲面 $\mathcal{S}$，单位外法向量为 $\mathbf{n}$。
+考虑流体中任意一个\textcolor{red}{在参考系下固定的体积} $\mathcal{V}$，其边界为封闭曲面 $\mathcal{S}$，单位外法向量为 $\mathbf{n}$。
 令 $\rho(\mathbf{r}, t)$ 为流体密度，$\mathbf{v}(\mathbf{r}, t)$ 为流速，则质量守恒的积分形式可写为：
 \begin{equation}
 \frac{d}{dt} \left( \iiint_{\mathcal{V}} \rho \, dV \right) 
@@ -70,97 +138,199 @@
 \boxed{\nabla \cdot \mathbf{v} = 0}
 \end{equation}
 
-\paragraph{流体运动方程（动量守恒方程）}
-基于牛顿第二定律，一个随流体运动的物质体积 $\mathcal{V}(t)$内流体的总动量变化率等于作用于其上的体积力和表面力之和：
-\begin{equation}
-\frac{\mathrm{d}}{\mathrm{d}t} \iiint_{\mathcal{V}(t)} \rho \mathbf{v} \,\mathrm{d}V = \iiint_{\mathcal{V}(t)} \rho \mathbf{f} \,\mathrm{d}V + \iint_{\partial \mathcal{V}(t)} \boldsymbol{\sigma} \cdot \mathbf{n} \,\mathrm{d}S
-\end{equation}
-其中 $\rho$ 为密度，$\mathbf{v}$ 为速度，$\mathbf{f}$ 为单位质量体积力，$\boldsymbol{\sigma}$ 为应力张量，$\mathbf{n}$ 为控制体表面的外法线单位向量。
+\paragraph{本构方程（牛顿流体）}
+牛顿流体满足以下两条基本假设：
+\begin{enumerate}
+    \item 黏性应力与应变率张量成线性关系；
+    \item 流体为各向同性介质。
+\end{enumerate}
 
-利用雷诺输运定理，左侧可写为：
+应变率张量定义为：
 \begin{equation}
-\frac{\mathrm{d}}{\mathrm{d}t} \iiint_{\mathcal{V}(t)} \rho \mathbf{v} \,\mathrm{d}V = \iiint_{\mathcal{V}(t)} \rho \frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t} \,\mathrm{d}V.
-\end{equation}
-
-其中 $\mathrm{d}/\mathrm{d}t = \partial/\partial t + \mathbf{v} \cdot \nabla$ 为物质导数，即随体导数。这个等式成立的前提是质量守恒，即 $\rho \mathrm{d}V$ 在随体运动中保持不变。
-
-对于表面积分，应用高斯散度定理将其转换为体积分：
-\begin{equation}
-\iint_{\partial \mathcal{V}(t)} \boldsymbol{\sigma} \cdot \mathbf{n} \,\mathrm{d}S = \iiint_{\mathcal{V}(t)} \nabla \cdot \boldsymbol{\sigma} \,\mathrm{d}V.
+\mathbf{e} = \frac{1}{2} \left( \nabla \mathbf{v} + (\nabla \mathbf{v})^T \right), \quad e_{ij} = \frac{1}{2}\left( \frac{\partial v_i}{\partial x_j} + \frac{\partial v_j}{\partial x_i} \right).
 \end{equation}
 
-由于物质体积 $\mathcal{V}(t)$ 是任意的，我们可以得到局部的微分形式：
-\begin{equation}
-\rho \frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t} = \rho \mathbf{f} + \nabla \cdot \boldsymbol{\sigma}.
-\label{eq:general_motion}
+对于各向同性线性材料，最一般的四阶张量形式可简化为两个独立系数。
+\begin{equation}\label{eq:constitutive_general}
+\boldsymbol{\sigma}' = 2A\mathbf{e} + B (\nabla \cdot \mathbf{v})
+\quad \text{或}\quad \sigma'_{ij} = 2Ae_{ij} + B \, \delta_{ij}e_{ll}
 \end{equation}
 
-将应力张量分解为各向同性压力部分和黏性偏应力部分：
+由此可得：
+\begin{equation}\label{eq:constitutive_newtonian}
+\boldsymbol{\sigma}' = 2\eta \mathbf{e} + \left( \zeta - \frac{2}{3}\eta \right) (\nabla \cdot \mathbf{v}) \mathbf{I}
+\quad \text{或}\quad 
+\sigma'_{ij} = \eta \left(2e_{ij} - \frac{2}{3} \delta_{ij} e_{ll}\right) + \zeta \, \delta_{ij}e_{ll}
+\end{equation}
+其中 $\eta$ 为剪切黏度（动力黏度），$\zeta$ 为体积黏度（第二黏度）。第一项对应无体积变化时的纯剪切变形，第二项对应各向同性的胀缩变形。
+
+\begin{explain}
+类似于应力张量，将应变率张量分解为偏量部分（无迹）和球量部分（各向同性）：
 \begin{equation}
-\boldsymbol{\sigma} = -p \mathbf{I} + \boldsymbol{\sigma}'.
+\epsilon_{ij} = \underbrace{\left(\epsilon_{ij} - \frac{1}{3}\delta_{ij}\epsilon_{kk}\right)}_{\text{偏量}} + \underbrace{\frac{1}{3}\delta_{ij}\epsilon_{kk}}_{\text{球量}}.
 \end{equation}
 
-其中 $p$ 为压力，$\boldsymbol{\sigma}'$ 为黏性应力张量（又称偏应力张量）。代入式~(\ref{eq:general_motion})，得到：
-\begin{equation}
-\rho \frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t} = \rho \mathbf{f} - \nabla p + \nabla \cdot \boldsymbol{\sigma}'.
-\label{eq:general_motion_pressure}
-\end{equation}
+代入一般形式\ref{eq:constitutive_general}，依旧分解为偏量部分（无迹）和球量部分（各向同性）得：
+\[
+\begin{aligned}
+\sigma'_{ij} &= A \epsilon_{ij} + B \delta_{ij}\epsilon_{kk} \\
+&= A\left[\left(\epsilon_{ij} - \frac{1}{3}\delta_{ij}\epsilon_{kk}\right) + \frac{1}{3}\delta_{ij}\epsilon_{kk}\right] + B\delta_{ij}\epsilon_{kk} \\
+&= A\left(\epsilon_{ij} - \frac{1}{3}\delta_{ij}\epsilon_{kk}\right) + \left(B + \frac{A}{3}\right)\delta_{ij}\epsilon_{kk}
+\end{aligned}
+\]
 
-这就是适用于任意连续介质（包括牛顿和非牛顿流体）的通用运动方程。它实际上是一个动量守恒的局部形式，左侧为单位体积流体的惯性力（质量×加速度），右侧依次为体积力、压力梯度和黏性应力散度。
-
-\subsection{牛顿流体的纳维-斯托克斯方程}
-
-对于牛顿流体，假设黏性应力与应变率张量成线性关系，且流体各向同性：
-\begin{equation}
-\boldsymbol{\sigma}' = \eta \left( \nabla \mathbf{v} + (\nabla \mathbf{v})^T \right) + \left( \zeta - \frac{2}{3}\eta \right) (\nabla \cdot \mathbf{v}) \mathbf{I}.
-\label{eq:constitutive}
-\end{equation}
-
-其中 $\eta$ 为动力黏度（剪切黏度），$\zeta$ 为体积黏度（第二黏度）。这个本构关系是牛顿流体定义的核心，其物理含义是：黏性应力仅由流动的变形产生，与流体的刚体转动无关。
+令剪切黏度 $\eta \equiv A$，体积黏度 $\zeta \equiv B + A/3$，则：
+\[
+\sigma'_{ij} = \eta \left(2e_{ij} - \frac{2}{3} \delta_{ij} e_{ll}\right) + \zeta \, \delta_{ij}e_{ll}
+\]
+\end{explain}
 
 对于不可压缩流体，$\nabla \cdot \mathbf{v} = 0$，本构方程简化为：
 \begin{equation}
-\boldsymbol{\sigma}' = \eta \left( \nabla \mathbf{v} + (\nabla \mathbf{v})^T \right).
+\boldsymbol{\sigma}' = 2\eta \mathbf{e} = \eta \left( \nabla \mathbf{v} + (\nabla \mathbf{v})^T \right)
+\quad \text{或} \quad
+\sigma'_{ij} = \eta \left( \frac{\partial v_i}{\partial x_j} + \frac{\partial v_j}{\partial x_i} \right)
 \end{equation}
 
-此时 $\nabla \cdot \boldsymbol{\sigma}' = \eta \nabla^2 \mathbf{v}$。代入式~(\ref{eq:general_motion_pressure})，并展开物质导数：
+\paragraph{流体运动方程（动量守恒方程）}
+基于牛顿第二定律，一个\textcolor{red}{随流体运动的物质体积} $\mathcal{V}(t)$内流体的总动量变化率等于作用于其上的体积力和表面力之和：
 \begin{equation}
-\rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v} \cdot \nabla \mathbf{v} \right) = \rho \mathbf{f} - \nabla p + \eta \nabla^2 \mathbf{v}.
-\label{eq:ns}
+\frac{\mathrm{d}}{\mathrm{d}t} \iiint_{\mathcal{V}(t)} \rho \mathbf{v} \,\mathrm{d}V 
+= \iiint_{\mathcal{V}(t)} \rho \mathbf{f} \,\mathrm{d}V + \iint_{\partial \mathcal{V}(t)} \boldsymbol{\sigma} \cdot \mathbf{n} \,\mathrm{d}S
 \end{equation}
+其中 $\rho$ 为密度，$\mathbf{v}$ 为速度，$\mathbf{f}$ 为单位质量体积力，$\boldsymbol{\sigma}$ 为应力张量，$\mathbf{n}$ 为控制体表面的外法线单位向量。
 
-这就是著名的**纳维-斯托克斯方程**，是流体力学中最基本的控制方程之一。
-
-\subsection{理想流体的欧拉方程}
-
-当流体黏性可忽略时，$\eta = 0$，$\boldsymbol{\sigma}' = 0$。式~(\ref{eq:ns}) 退化为：
+左侧由于$\rho \mathrm{d}V$ 在随体运动（拉格朗日观点）中保持不变，右侧使用奥--高定理，
+得到动量方程的积分形式：
 \begin{equation}
-\rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v} \cdot \nabla \mathbf{v} \right) = \rho \mathbf{f} - \nabla p.
-\label{eq:euler}
-\end{equation}
+\frac{\mathrm{d}}{\mathrm{d}t} \iiint_{\mathcal{V}(t)} \rho \mathbf{v} \,\mathrm{d}V 
+= \boxed{\iiint_{\mathcal{V}(t)} \rho \frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t} \,\mathrm{d}V
+= \iiint_{\mathcal{V}(t)} \left(\rho \mathbf{f} + \nabla \cdot \boldsymbol{\sigma}\right) \,\mathrm{d}V
+}\end{equation}
 
-这就是**欧拉方程**，用于描述无黏理想流体的运动。在无黏条件下，流体微团之间无法传递切向应力，因此流动的旋涡结构不会被黏性耗散，这也是理想流体理论中许多奇妙现象（如升力悖论）的根源。
-
-\subsection{纳维-斯托克斯方程的无量纲形式}
-
-引入特征长度 $L$、特征速度 $U$、特征时间 $L/U$ 和特征压力 $\rho U^2$ 进行无量纲化。定义无量纲变量：
+由于物质体积 $\mathcal{V}(t)$ 是任意的，得到局部的微分形式：
 \begin{equation}
-\mathbf{r}' = \frac{\mathbf{r}}{L}, \quad t' = \frac{t}{L/U}, \quad \mathbf{v}' = \frac{\mathbf{v}}{U}, \quad p' = \frac{p - p_0}{\rho U^2}.
+\rho \frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t} = \rho \mathbf{f} + \nabla \cdot \boldsymbol{\sigma}.
+\label{eq:motion_local}
 \end{equation}
 
-代入式~(\ref{eq:ns})，并假设体积力 $\mathbf{f}$ 已吸收到压力项中（即考虑修正压力），得到：
+将应力张量分解式\ref{eq:stress_composition}入式\ref{eq:motion_local}，得到：
 \begin{equation}
-\frac{\partial \mathbf{v}'}{\partial t'} + \mathbf{v}' \cdot \nabla' \mathbf{v}' = -\nabla' p' + \frac{1}{Re} \nabla'^2 \mathbf{v}'.
-\label{eq:ns_dimensionless}
+\rho \frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t} = \rho \mathbf{f} - \nabla p + \nabla \cdot \boldsymbol{\sigma}'.
+\label{eq:motion_local_pressure}
 \end{equation}
 
-其中 $Re = \rho U L / \eta = U L / \nu$ 为**雷诺数**，$\nu = \eta/\rho$ 为运动黏度。这个无量纲形式揭示了流体动力学问题的相似律——几何相似且雷诺数相同的两个流动，其无量纲速度场和压力场完全一致。
+上面是适用于任意连续介质的拉格朗日观点下运动方程，下面是欧拉观点下得到的运动方程。
+将物质导数展开 $\mathrm{d}/\mathrm{d}t = \partial/\partial t + \mathbf{v}\cdot\nabla$，
+得到欧拉观点下任意连续介质的运动方程：
+\begin{equation}
+\rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v}\cdot\nabla \mathbf{v} \right) = \rho \mathbf{f} - \nabla p + \nabla \cdot \boldsymbol{\sigma}'.
+\label{eq:eulerian_general}
+\end{equation}
 
-式~(\ref{eq:ns_dimensionless}) 表明，雷诺数表征了惯性项与黏性项的相对重要性：
+将牛顿流体的本构方程\ref{eq:constitutive_newtonian}代入式\ref{eq:eulerian_general}，
+得到纳维-斯托克斯方程：
+\begin{equation}
+\rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v}\cdot\nabla \mathbf{v} \right) = \rho \mathbf{f} - \nabla p + \eta \nabla^2 \mathbf{v} + \left( \zeta + \frac{\eta}{3} \right) \nabla (\nabla\cdot\mathbf{v}).
+\label{eq:ns_compressible}
+\end{equation}
+
+若流体为不可压缩（$\nabla\cdot\mathbf{v}=0$），则体积黏度 $\zeta$ 项消失，
+得不可压缩纳维-斯托克斯方程：
+\begin{equation}
+\rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v}\cdot\nabla \mathbf{v} \right) = \rho \mathbf{f} - \nabla p + \eta \nabla^2 \mathbf{v}.
+\label{eq:ns_incompressible}
+\end{equation}
+
+当流体黏性可忽略时（$\eta = 0$，$\boldsymbol{\sigma}' = 0$），式\ref{eq:eulerian_general}退化为欧拉方程：
+\begin{equation}
+\rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v}\cdot\nabla \mathbf{v} \right) = \rho \mathbf{f} - \nabla p.
+\label{eq:euler_incompressible}
+\end{equation}
+
+积分形式的运动方程详见\ref{sec:conservation}节守恒律。
+下面将从欧拉观点下的微分形式运动方程\ref{eq:eulerian_general}出发，推导其散度形式。
+
+利用连续性方程 $\partial\rho/\partial t + \nabla\cdot(\rho\mathbf{v}) = 0$，将左侧第一项展开：
+\begin{equation}
+\begin{aligned}
+    \rho \frac{\partial \mathbf{v}}{\partial t} = \frac{\partial}{\partial t}(\rho \mathbf{v}) - \mathbf{v}\frac{\partial \rho}{\partial t}
+= \frac{\partial}{\partial t}(\rho \mathbf{v}) + \mathbf{v}\,\nabla\cdot(\rho\mathbf{v}).
+\end{aligned}
+\end{equation}
+
+将左侧第二项（对流项） $\rho(\mathbf{v}\cdot\nabla)\mathbf{v}$展开：
+\begin{equation}
+\rho(\mathbf{v}\cdot\nabla)\mathbf{v} 
+= \rho v_j \frac{\partial v_i}{\partial x_j}
+= \frac{\partial}{\partial x_j}(\rho v_i v_j) - v_i \frac{\partial}{\partial x_j}(\rho v_j)
+= \nabla\cdot(\rho \mathbf{v}\otimes\mathbf{v}) - \mathbf{v}\,\nabla\cdot(\rho\mathbf{v})
+\end{equation}
+其中 $\mathbf{v}\otimes\mathbf{v}$ 表示并矢。
+
+代入方程\ref{eq:eulerian_general}的左侧，得到：
+\begin{equation}
+\rho \frac{\partial \mathbf{v}}{\partial t} + \rho(\mathbf{v}\cdot\nabla)\mathbf{v}
+= \frac{\partial}{\partial t}(\rho \mathbf{v}) + \nabla\cdot(\rho \mathbf{v}\otimes\mathbf{v})
+= \rho \mathbf{f} - \nabla p + \nabla \cdot \boldsymbol{\sigma}'
+\end{equation}
+
+将所有含散度的项移到右侧，整理为守恒律形式：
+\begin{equation}
+\frac{\partial}{\partial t}(\rho \mathbf{v})
+= -\nabla\cdot(\rho \mathbf{v}\otimes\mathbf{v} + p\mathbf{I} - \boldsymbol{\sigma}') + \rho \mathbf{f}
+\quad \text{或} \quad
+\frac{\partial}{\partial t}(\rho v_i) = -\frac{\partial}{\partial x_j}\left(\rho v_i v_j + p\delta_{ij} - \sigma'_{ij}\right) + \rho f_i
+\end{equation}
+
+\begin{definition}[动量通量张量 $\boldsymbol{\Pi}$]
+    \begin{equation}
+    \boldsymbol{\Pi} = \rho \mathbf{v}\otimes\mathbf{v} + p\mathbf{I} - \boldsymbol{\sigma}'
+    \quad \text{或} \quad
+    \Pi_{ij} = \rho v_i v_j + p\delta_{ij} - \sigma'_{ij}
+    \end{equation}
+其中各项的物理含义为：
 \begin{itemize}
-    \item 当 $Re \ll 1$ 时，黏性项占主导，对应蠕动流或低雷诺数流动；
-    \item 当 $Re \gg 1$ 时，惯性项占主导，对应高雷诺数流动，此时流动可能出现边界层和湍流。
+    \item $\rho v_i v_j$：由流体宏观运动携带的动量通量（对流项）；
+    \item $p\delta_{ij}$：由压力传递的动量通量（各向同性挤压）；
+    \item $-\sigma'_{ij}$：由黏性应力传递的动量通量（切向和法向黏性应力）。
 \end{itemize}
+\end{definition}
+
+\paragraph{动能守恒方程}
+不可压缩流体动能守恒方程、伯努利方程以及势流伯努利方程详见\ref{sec:conservation}节守恒律。
+
+\paragraph{气体状态方程}
+详见热力学与统计物理部分。
+\subsection{无量纲数及其无量纲方程}
+\paragraph{输运现象中的扩散与对流竞争}
+\begin{table}[h]
+\centering
+\caption{输运现象中的扩散与对流竞争}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{无量纲数} & \textbf{定义} & \textbf{物理含义} \\
+\hline
+雷诺数 ($Re$) & $\dfrac{UL}{\nu}$ & 惯性力 / 黏性力；动量对流率 / 动量扩散率 \\
+\hline
+施密特数 ($Sc$) & $\dfrac{\nu}{D_m}$ & 动量扩散率 / 质量扩散率 \\
+\hline
+普朗特数 ($Pr$) & $\dfrac{\nu}{\kappa}$ & 动量扩散率 / 热量扩散率\\
+\hline
+刘易斯数 ($Le$) & $\dfrac{\kappa}{D_m}$ & 热量扩散率 / 质量扩散率\\
+\hline
+佩克莱数 ($Pe$) & $\dfrac{UL}{D_m} = Re \cdot Sc$ & 质量对流率 / 质量扩散率 \\
+\hline
+热佩克莱数 ($Pe_\theta$) & $\dfrac{UL}{\kappa} = Re \cdot Pr$ & 热量对流率 / 热量扩散率 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+
 
 
 

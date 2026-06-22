@@ -73,27 +73,27 @@ breaklinks=true]{hyperref}
 
 % ########## 定理环境 start ####################################
 \theoremstyle{definition}
-\newtheorem{defn}{\indent 定义}[section]
+\newtheorem{definition}{\indent 定义}[section]
 
 \newtheorem{add}{\indent 补充}[section]
 
 \newtheorem{lemma}{\indent 引理}[section]    % 引理 定理 推论 准则 共用一个编号计数
-\newtheorem{thm}[lemma]{\indent 定理}
+\newtheorem{theorem}[lemma]{\indent 定理}
 \newtheorem{corollary}[lemma]{\indent 推论}
 \newtheorem{criterion}[lemma]{\indent 准则}
 \newtheorem{law}[lemma]{\indent 定律}
 \newtheorem{principle}[lemma]{\indent 原理}
-\newtheorem{proposition}{\indent 命题}[section]
+\newtheorem{proposition}[lemma]{\indent 命题}
 
 \newtheorem{example}{\indent \textcolor{SeaGreen}{例}}[section]
 
 % 无编号定理环境
 \newenvironment{note}{\par\textbf{注：}}{}
 \newenvironment{explain}{\par\textbf{解释：}}{}
-\newenvironment{prf}{\par\textbf{证明：}}{\qed\par}
-\newenvironment{sol}{\par\textbf{解：}}{\qed\par}
+\renewenvironment{proof}{\par\textbf{证明：}}{\qed\par}
+\newenvironment{solution}{\par\textbf{解：}}{\qed\par}
 \newenvironment{known}{\par\textbf{已知：}}{}
-\newenvironment{deriv}{\par\textbf{推导：}}{\qed\par}
+\renewenvironment{derivative}{\par\textbf{推导：}}{\qed\par}
 
 % ######### 定理环境 end  #####################################
 

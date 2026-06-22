@@ -1,5 +1,3 @@
-好的，我们将从最基本的定义出发，严格推导欧几里得空间（$\mathbb{R}^3$）中，在一般曲线坐标系下的梯度、散度、旋度和拉普拉斯算子的表达式。推导的核心是**坐标变换的不变性**和**雅可比矩阵**的性质。
-
 ### 基本定义
 
 1.  **笛卡尔坐标系**：记为 $\mathbf{x} = (x^1, x^2, x^3) = (x, y, z)$。这是我们的基准坐标系。
@@ -12,7 +10,7 @@
 4.  **局部协变基向量**：
     $$ \mathbf{g}_i = \frac{\partial \mathbf{x}}{\partial u^i} = \left( \frac{\partial x^1}{\partial u^i}, \frac{\partial x^2}{\partial u^i}, \frac{\partial x^3}{\partial u^i} \right)^T, \quad i=1,2,3 $$
     这些向量是雅可比矩阵的列向量。它们构成了曲线坐标系中任意一点切空间的一组基。
-5.  **度规张量 (Metric Tensor)**：欧氏空间的度规在曲线坐标下体现为：
+5.  **度规张量**：欧氏空间的度规在曲线坐标下体现为：
     $$ g_{ij} = \mathbf{g}_i \cdot \mathbf{g}_j = \sum_{k=1}^3 \frac{\partial x^k}{\partial u^i} \frac{\partial x^k}{\partial u^j} $$
     度规张量的行列式 $g = \det(g_{ij})$ 与雅可比行列式 $J$ 的关系为 $g = J^2$。
     对于**正交曲线坐标系**，有 $g_{ij} = 0 \, (i \neq j)$，此时定义**拉梅系数**：
@@ -152,7 +150,3 @@ $$ \nabla \times \mathbf{F} = \frac{1}{h_2 h_3} \left[ \frac{\partial}{\partial 
 
 **最终公式（正交系）**：
 $$ \boxed{\nabla^2 f = \frac{1}{h_1 h_2 h_3} \left[ \frac{\partial}{\partial u^1} \left( \frac{h_2 h_3}{h_1} \frac{\partial f}{\partial u^1} \right) + \frac{\partial}{\partial u^2} \left( \frac{h_3 h_1}{h_2} \frac{\partial f}{\partial u^2} \right) + \frac{\partial}{\partial u^3} \left( \frac{h_1 h_2}{h_3} \frac{\partial f}{\partial u^3} \right) \right]} $$
-
-### 总结
-
-以上推导基于欧几里得空间中的坐标变换理论，通过积分定理（散度定理、斯托克斯定理）和几何考虑（体积元、面积元、弧长元），严格地得出了在**正交曲线坐标系**下nabla算子的所有运算公式。这些公式是处理柱坐标、球坐标等问题的基础。对于非正交系，需要使用更一般的张量分析公式，其形式更为复杂。

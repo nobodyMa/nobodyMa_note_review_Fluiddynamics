@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.24)  17 SEP 2025 11:11
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.24)  22 JUN 2026 13:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**caogao
-(./caogao.tex
+**草稿
+(./草稿.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (d:/LaTex/texlive/2024/texmf-dist/tex/latex/ctex/ctexbook.cls (d:/LaTex/texlive/2024/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg
@@ -299,8 +299,8 @@ Package graphics Info: Driver file: xetex.def on input line 107.
 )
 \Gin@req@height=\dimen184
 \Gin@req@width=\dimen185
-) (./caogao.aux)
-\openout1 = `caogao.aux'.
+) (./草稿.aux)
+\openout1 = `草稿.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
@@ -374,7 +374,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 19.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 19.
- (./caogao.aux)
+ (./草稿.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -382,11 +382,11 @@ L3 programming layer <2022/07/14>
  ) 
 Here is how much of TeX's memory you used:
  8628 strings out of 476691
- 234667 string characters out of 5799507
+ 234623 string characters out of 5799507
  1918842 words of memory out of 5000000
  30601 multiletter control sequences out of 15000+600000
  559807 words of font info for 50 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 93i,1n,97p,372b,271s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,1n,97p,368b,271s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 No pages of output.

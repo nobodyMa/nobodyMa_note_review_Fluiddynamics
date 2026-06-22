@@ -21,7 +21,49 @@
 
 
 
+\subsubsection*{非理想气体（一般流体）能量方程的无量纲化}
+上述推导建立在理想气体状态方程及常比热假设之上。对于非理想气体或一般简单流体，可以从通用的温度形式能量方程出发：
+\begin{equation}
+    \rho c_p \left( \frac{\partial T}{\partial t} + \mathbf{u}\cdot\nabla T \right) = \nabla \cdot (k \nabla T) + \beta T \left( \frac{\partial p}{\partial t} + \mathbf{u}\cdot\nabla p \right) + \Phi ,
+    \label{eq:energy_general}
+\end{equation}
+式中 $\beta = -\frac{1}{\rho}\left(\frac{\partial \rho}{\partial T}\right)_p$ 为热膨胀系数。对于理想气体，$\beta = 1/T$，方程即退化为前文形式。
 
+仍采用特征尺度：长度 $L$、速度 $U$、来流密度 $\rho_\infty$、温度 $T_\infty$，并取特征压力 $\rho_\infty U^2$，特征时间 $L/U$。定义无量纲变量（上标 $*$）及物性无量纲形式：
+\[
+\rho^* = \frac{\rho}{\rho_\infty},\; \mathbf{u}^* = \frac{\mathbf{u}}{U},\; T^* = \frac{T}{T_\infty},\; p^* = \frac{p}{\rho_\infty U^2},\; c_p^* = \frac{c_p}{c_{p,\infty}},\; k^* = \frac{k}{k_\infty},\; \beta^* = \frac{\beta}{\beta_\infty}.
+\]
+注意 $\beta_\infty$ 可取参考状态下的热膨胀系数。
+
+代入方程 \eqref{eq:energy_general} 各项，乘以特征因子 $\dfrac{L}{\rho_\infty c_{p,\infty} T_\infty U}$，整理得到：
+\begin{multline}
+    \rho^* c_p^* \left( \frac{\partial T^*}{\partial t^*} + \mathbf{u}^* \cdot \nabla^* T^* \right) 
+    = \frac{1}{Re\,Pr} \nabla^* \cdot (k^* \nabla^* T^*) \\
+    + B\,Ec \left( \frac{\partial p^*}{\partial t^*} + \mathbf{u}^* \cdot \nabla^* p^* \right) 
+    + \frac{Ec}{Re} \Phi^* .
+    \label{eq:energy_nondim_general}
+\end{multline}
+其中：
+\begin{align*}
+    Re &= \frac{\rho_\infty U L}{\mu_\infty}, \quad 
+    Pr = \frac{\mu_\infty c_{p,\infty}}{k_\infty}, \quad 
+    Ec = \frac{U^2}{c_{p,\infty} T_\infty},\\
+    B &= \beta_\infty T_\infty .
+\end{align*}
+无量纲耗散函数 $\Phi^*$ 形式与理想气体情形相同。
+
+\textbf{与理想气体情形对比：}
+\begin{itemize}
+    \item 理想气体 $\beta T = 1$，故 $B = 1$，且 $c_p$ 常可视为常数（$c_p^*=1$），方程 \eqref{eq:energy_nondim_general} 退化为先前导出的理想气体能量方程。
+    \item 对于非理想气体，$B$ 是一个由参考状态决定的独立无量纲数，反映了流体热膨胀对压力功贡献的相对强弱。实际计算中 $\beta^*$ 和 $c_p^*$ 通常是 $T^*$ 和 $p^*$（或 $\rho^*$）的函数，需与状态方程耦合求解。
+    \item 状态方程方面，非理想气体不能使用 $p = \rho R T$。若采用真实气体状态方程 $p = Z \rho R T$（$Z$ 为压缩因子），无量纲化后引入：
+    \begin{equation}
+        p^* = \frac{Z}{\gamma_\infty Ma_\infty^2} \rho^* T^*,
+    \end{equation}
+    其中 $\gamma_\infty$ 可取参考比热比，$Ma_\infty = U/\sqrt{\gamma_\infty R T_\infty}$。$Z$ 的无量纲形式 $Z^* = Z/Z_\infty$（或直接取 $Z$ 作为依赖于 $p^*, T^*$ 的函数）成为额外控制参数，使流场依赖于对比态参数。
+\end{itemize}
+
+综上所述，非理想气体的无量纲化在原理上完全可行，仅需在能量方程中引入表征热膨胀效应的 $B$ 数，并在状态方程中引入真实气体的对比参数。流动由 $Re$、$Pr$、$Ec$、$B$、$Ma_\infty$（或压缩性参数）以及物性函数共同控制，当 $B=1$、$Z=1$、$c_p^*=1$ 时即恢复理想气体情形。
 
 
 

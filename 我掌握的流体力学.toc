@@ -9,4 +9,8 @@
 \contentsline {paragraph}{动能守恒方程}{5}{paragraph*.5}%
 \contentsline {paragraph}{气体状态方程}{5}{paragraph*.6}%
 \contentsline {subsection}{\numberline {1.1.4}无量纲数及其无量纲方程}{5}{subsection.1.1.4}%
-\contentsline {paragraph}{输运现象中的扩散与对流竞争}{5}{paragraph*.7}%
+\contentsline {subsubsection}{输运现象中的扩散与对流竞争}{5}{subsubsection*.7}%
+\contentsline {paragraph}{动量方程与雷诺数 $Re$}{6}{paragraph*.8}%
+\contentsline {paragraph}{能量方程与热佩克莱数 $Pe_\mittheta $ 及普朗特数 $Pr$}{6}{paragraph*.9}%
+\contentsline {paragraph}{组分方程与佩克莱数 $Pe$ 及施密特数 $Sc$}{7}{paragraph*.10}%
+\contentsline {paragraph}{刘易斯数 $Le$ 的导出}{7}{paragraph*.11}%

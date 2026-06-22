@@ -103,19 +103,19 @@ M_z = 0 \quad \Rightarrow \quad \sigma_{xy} = \sigma_{yx}
 \paragraph{连续性方程（质量守恒方程）}
 
 考虑流体中任意一个\textcolor{red}{在参考系下固定的体积} $\mathcal{V}$，其边界为封闭曲面 $\mathcal{S}$，单位外法向量为 $\mathbf{n}$。
-令 $\rho(\mathbf{r}, t)$ 为流体密度，$\mathbf{v}(\mathbf{r}, t)$ 为流速，则质量守恒的积分形式可写为：
+令 $\rho(\mathbf{r}, t)$ 为流体密度，$\mathbf{u}(\mathbf{r}, t)$ 为流速，则质量守恒的积分形式可写为：
 \begin{equation}
 \frac{d}{dt} \left( \iiint_{\mathcal{V}} \rho \, dV \right) 
 =\iiint_{\mathcal{V}} \frac{\partial \rho}{\partial t} \, dV+0
-= - \iint_{S} \rho \, \mathbf{v} \cdot \mathbf{n} \, dS
+= - \iint_{S} \rho \, \mathbf{u} \cdot \mathbf{n} \, dS
 \end{equation}
 对第二个等式应用奥--高定理：
 \begin{equation}
-\iiint_{\mathcal{V}} \left[ \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{v}) \right] dV = 0
+\iiint_{\mathcal{V}} \left[ \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{u}) \right] dV = 0
 \end{equation}
 由于体积 \( \mathcal{V} \) 的选择具有任意性，可得到连续方程的微分形式：
 \begin{equation}\label{eq:continuity_euler}
-\boxed{\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{v}) = 0}
+\boxed{\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{u}) = 0}
 \end{equation}
 此为欧拉观点下的连续性方程，因为选择的区域在描述流动的参考系下是固定的。
 
@@ -126,16 +126,16 @@ M_z = 0 \quad \Rightarrow \quad \sigma_{xy} = \sigma_{yx}
 
 将方程\ref{eq:continuity_euler}的散度项展开，得到拉格朗日观点下的连续性方程：
 \begin{equation}\label{eq:continuity_lagrange}
-\frac{\partial \rho}{\partial t} + \rho \nabla \cdot \mathbf{v} + \mathbf{v} \cdot \nabla \rho
-=\boxed{\frac{d\rho}{dt} + \rho \nabla \cdot \mathbf{v} = 0}
+\frac{\partial \rho}{\partial t} + \rho \nabla \cdot \mathbf{u} + \mathbf{u} \cdot \nabla \rho
+=\boxed{\frac{d\rho}{dt} + \rho \nabla \cdot \mathbf{u} = 0}
 \end{equation}
 该形式表明，对于跟随流体微团运动的观察者来说，
-密度的变化率等于流体微团的体积膨胀率的负值 \( -\rho \nabla \cdot \mathbf{v} \)。
+密度的变化率等于流体微团的体积膨胀率的负值 \( -\rho \nabla \cdot \mathbf{u} \)。
 
 对于\textcolor{red}{不可压缩流体}，每个流体微团的密度沿其运动轨迹保持不变\(d\rho/dt = 0\)，
 连续性方程简化为速度场的散度为零：
 \begin{equation}\label{eq:continuity_incompressible}
-\boxed{\nabla \cdot \mathbf{v} = 0}
+\boxed{\nabla \cdot \mathbf{u} = 0}
 \end{equation}
 
 \paragraph{本构方程（牛顿流体）}
@@ -147,22 +147,22 @@ M_z = 0 \quad \Rightarrow \quad \sigma_{xy} = \sigma_{yx}
 
 应变率张量定义为：
 \begin{equation}
-\mathbf{e} = \frac{1}{2} \left( \nabla \mathbf{v} + (\nabla \mathbf{v})^T \right), \quad e_{ij} = \frac{1}{2}\left( \frac{\partial v_i}{\partial x_j} + \frac{\partial v_j}{\partial x_i} \right).
+\mathbf{e} = \frac{1}{2} \left( \nabla \mathbf{u} + (\nabla \mathbf{u})^T \right), \quad e_{ij} = \frac{1}{2}\left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right).
 \end{equation}
 
 对于各向同性线性材料，最一般的四阶张量形式可简化为两个独立系数。
 \begin{equation}\label{eq:constitutive_general}
-\boldsymbol{\sigma}' = 2A\mathbf{e} + B (\nabla \cdot \mathbf{v})
+\boldsymbol{\sigma}' = 2A\mathbf{e} + B (\nabla \cdot \mathbf{u})
 \quad \text{或}\quad \sigma'_{ij} = 2Ae_{ij} + B \, \delta_{ij}e_{ll}
 \end{equation}
 
 由此可得：
 \begin{equation}\label{eq:constitutive_newtonian}
-\boldsymbol{\sigma}' = 2\eta \mathbf{e} + \left( \zeta - \frac{2}{3}\eta \right) (\nabla \cdot \mathbf{v}) \mathbf{I}
+\boldsymbol{\sigma}' = 2\mu \mathbf{e} + \left( \lambda - \frac{2}{3}\mu \right) (\nabla \cdot \mathbf{u}) \mathbf{I}
 \quad \text{或}\quad 
-\sigma'_{ij} = \eta \left(2e_{ij} - \frac{2}{3} \delta_{ij} e_{ll}\right) + \zeta \, \delta_{ij}e_{ll}
+\sigma'_{ij} = \mu \left(2e_{ij} - \frac{2}{3} \delta_{ij} e_{ll}\right) + \lambda \, \delta_{ij}e_{ll}
 \end{equation}
-其中 $\eta$ 为剪切黏度（动力黏度），$\zeta$ 为体积黏度（第二黏度）。第一项对应无体积变化时的纯剪切变形，第二项对应各向同性的胀缩变形。
+其中 $\mu$ 为剪切黏度（动力黏度），$\lambda$ 为体积黏度（第二黏度）。第一项对应无体积变化时的纯剪切变形，第二项对应各向同性的胀缩变形。
 
 \begin{explain}
 类似于应力张量，将应变率张量分解为偏量部分（无迹）和球量部分（各向同性）：
@@ -179,134 +179,173 @@ M_z = 0 \quad \Rightarrow \quad \sigma_{xy} = \sigma_{yx}
 \end{aligned}
 \]
 
-令剪切黏度 $\eta \equiv A$，体积黏度 $\zeta \equiv B + A/3$，则：
+令剪切黏度 $\mu \equiv A$，体积黏度 $\lambda \equiv B + A/3$，则：
 \[
-\sigma'_{ij} = \eta \left(2e_{ij} - \frac{2}{3} \delta_{ij} e_{ll}\right) + \zeta \, \delta_{ij}e_{ll}
+\sigma'_{ij} = \mu \left(2e_{ij} - \frac{2}{3} \delta_{ij} e_{ll}\right) + \lambda \, \delta_{ij}e_{ll}
 \]
 \end{explain}
 
-对于不可压缩流体，$\nabla \cdot \mathbf{v} = 0$，本构方程简化为：
+对于不可压缩流体，$\nabla \cdot \mathbf{u} = 0$，本构方程简化为：
 \begin{equation}
-\boldsymbol{\sigma}' = 2\eta \mathbf{e} = \eta \left( \nabla \mathbf{v} + (\nabla \mathbf{v})^T \right)
+\boldsymbol{\sigma}' = 2\mu \mathbf{e} = \mu \left( \nabla \mathbf{u} + (\nabla \mathbf{u})^T \right)
 \quad \text{或} \quad
-\sigma'_{ij} = \eta \left( \frac{\partial v_i}{\partial x_j} + \frac{\partial v_j}{\partial x_i} \right)
+\sigma'_{ij} = \mu \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right)
 \end{equation}
 
 \paragraph{流体运动方程（动量守恒方程）}
 基于牛顿第二定律，一个\textcolor{red}{随流体运动的物质体积} $\mathcal{V}(t)$内流体的总动量变化率等于作用于其上的体积力和表面力之和：
 \begin{equation}
-\frac{\mathrm{d}}{\mathrm{d}t} \iiint_{\mathcal{V}(t)} \rho \mathbf{v} \,\mathrm{d}V 
+\frac{\mathrm{d}}{\mathrm{d}t} \iiint_{\mathcal{V}(t)} \rho \mathbf{u} \,\mathrm{d}V 
 = \iiint_{\mathcal{V}(t)} \rho \mathbf{f} \,\mathrm{d}V + \iint_{\partial \mathcal{V}(t)} \boldsymbol{\sigma} \cdot \mathbf{n} \,\mathrm{d}S
 \end{equation}
-其中 $\rho$ 为密度，$\mathbf{v}$ 为速度，$\mathbf{f}$ 为单位质量体积力，$\boldsymbol{\sigma}$ 为应力张量，$\mathbf{n}$ 为控制体表面的外法线单位向量。
+其中 $\rho$ 为密度，$\mathbf{u}$ 为速度，$\mathbf{f}$ 为单位质量体积力，$\boldsymbol{\sigma}$ 为应力张量，$\mathbf{n}$ 为控制体表面的外法线单位向量。
 
 左侧由于$\rho \mathrm{d}V$ 在随体运动（拉格朗日观点）中保持不变，右侧使用奥--高定理，
 得到动量方程的积分形式：
 \begin{equation}
-\frac{\mathrm{d}}{\mathrm{d}t} \iiint_{\mathcal{V}(t)} \rho \mathbf{v} \,\mathrm{d}V 
-= \boxed{\iiint_{\mathcal{V}(t)} \rho \frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t} \,\mathrm{d}V
+\frac{\mathrm{d}}{\mathrm{d}t} \iiint_{\mathcal{V}(t)} \rho \mathbf{u} \,\mathrm{d}V 
+= \boxed{\iiint_{\mathcal{V}(t)} \rho \frac{\mathrm{d}\mathbf{u}}{\mathrm{d}t} \,\mathrm{d}V
 = \iiint_{\mathcal{V}(t)} \left(\rho \mathbf{f} + \nabla \cdot \boldsymbol{\sigma}\right) \,\mathrm{d}V
 }\end{equation}
 
 由于物质体积 $\mathcal{V}(t)$ 是任意的，得到局部的微分形式：
 \begin{equation}
-\rho \frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t} = \rho \mathbf{f} + \nabla \cdot \boldsymbol{\sigma}.
+\rho \frac{\mathrm{d}\mathbf{u}}{\mathrm{d}t} 
+= \rho \mathbf{f} + \nabla \cdot \boldsymbol{\sigma}
 \label{eq:motion_local}
 \end{equation}
 
 将应力张量分解式\ref{eq:stress_composition}入式\ref{eq:motion_local}，得到：
 \begin{equation}
-\rho \frac{\mathrm{d}\mathbf{v}}{\mathrm{d}t} = \rho \mathbf{f} - \nabla p + \nabla \cdot \boldsymbol{\sigma}'.
+\rho \frac{\mathrm{d}\mathbf{u}}{\mathrm{d}t} 
+= \rho \mathbf{f} - \nabla p + \nabla \cdot \boldsymbol{\sigma}'
 \label{eq:motion_local_pressure}
 \end{equation}
 
 上面是适用于任意连续介质的拉格朗日观点下运动方程，下面是欧拉观点下得到的运动方程。
-将物质导数展开 $\mathrm{d}/\mathrm{d}t = \partial/\partial t + \mathbf{v}\cdot\nabla$，
+将物质导数展开 $\mathrm{d}/\mathrm{d}t = \partial/\partial t + \mathbf{u}\cdot\nabla$，
 得到欧拉观点下任意连续介质的运动方程：
 \begin{equation}
-\rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v}\cdot\nabla \mathbf{v} \right) = \rho \mathbf{f} - \nabla p + \nabla \cdot \boldsymbol{\sigma}'.
+\rho \left( \frac{\partial \mathbf{u}}{\partial t} + \mathbf{u}\cdot\nabla \mathbf{u} \right) 
+= \rho \mathbf{f} - \nabla p + \nabla \cdot \boldsymbol{\sigma}'
 \label{eq:eulerian_general}
 \end{equation}
 
 将牛顿流体的本构方程\ref{eq:constitutive_newtonian}代入式\ref{eq:eulerian_general}，
 得到纳维-斯托克斯方程：
 \begin{equation}
-\rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v}\cdot\nabla \mathbf{v} \right) = \rho \mathbf{f} - \nabla p + \eta \nabla^2 \mathbf{v} + \left( \zeta + \frac{\eta}{3} \right) \nabla (\nabla\cdot\mathbf{v}).
+\rho \left( \frac{\partial \mathbf{u}}{\partial t} + \mathbf{u}\cdot\nabla \mathbf{u} \right) 
+= \rho \mathbf{f} - \nabla p + \mu \nabla^2 \mathbf{u} + \left( \lambda + \frac{\mu}{3} \right)
+ \nabla (\nabla\cdot\mathbf{u})
 \label{eq:ns_compressible}
 \end{equation}
 
-若流体为不可压缩（$\nabla\cdot\mathbf{v}=0$），则体积黏度 $\zeta$ 项消失，
+若流体为不可压缩（$\nabla\cdot\mathbf{u}=0$），则体积黏度 $\lambda$ 项消失，
 得不可压缩纳维-斯托克斯方程：
 \begin{equation}
-\rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v}\cdot\nabla \mathbf{v} \right) = \rho \mathbf{f} - \nabla p + \eta \nabla^2 \mathbf{v}.
+\rho \left( \frac{\partial \mathbf{u}}{\partial t} + \mathbf{u}\cdot\nabla \mathbf{u} \right) 
+= \rho \mathbf{f} - \nabla p + \mu \nabla^2 \mathbf{u}
 \label{eq:ns_incompressible}
 \end{equation}
 
-当流体黏性可忽略时（$\eta = 0$，$\boldsymbol{\sigma}' = 0$），式\ref{eq:eulerian_general}退化为欧拉方程：
+当流体黏性可忽略时（$\mu = 0$，$\boldsymbol{\sigma}' = 0$），式\ref{eq:eulerian_general}退化为欧拉方程：
 \begin{equation}
-\rho \left( \frac{\partial \mathbf{v}}{\partial t} + \mathbf{v}\cdot\nabla \mathbf{v} \right) = \rho \mathbf{f} - \nabla p.
+\rho \left( \frac{\partial \mathbf{u}}{\partial t} + \mathbf{u}\cdot\nabla \mathbf{u} \right)
+ = \rho \mathbf{f} - \nabla p
 \label{eq:euler_incompressible}
 \end{equation}
 
-积分形式的运动方程详见\ref{sec:conservation}节守恒律。
 下面将从欧拉观点下的微分形式运动方程\ref{eq:eulerian_general}出发，推导其散度形式。
 
-利用连续性方程 $\partial\rho/\partial t + \nabla\cdot(\rho\mathbf{v}) = 0$，将左侧第一项展开：
+利用连续性方程 $\partial\rho/\partial t + \nabla\cdot(\rho\mathbf{u}) = 0$，将左侧第一项展开：
 \begin{equation}
 \begin{aligned}
-    \rho \frac{\partial \mathbf{v}}{\partial t} = \frac{\partial}{\partial t}(\rho \mathbf{v}) - \mathbf{v}\frac{\partial \rho}{\partial t}
-= \frac{\partial}{\partial t}(\rho \mathbf{v}) + \mathbf{v}\,\nabla\cdot(\rho\mathbf{v}).
+    \rho \frac{\partial \mathbf{u}}{\partial t} = \frac{\partial}{\partial t}(\rho \mathbf{u}) - \mathbf{u}\frac{\partial \rho}{\partial t}
+= \frac{\partial}{\partial t}(\rho \mathbf{u}) + \mathbf{u}\,\nabla\cdot(\rho\mathbf{u}).
 \end{aligned}
 \end{equation}
 
-将左侧第二项（对流项） $\rho(\mathbf{v}\cdot\nabla)\mathbf{v}$展开：
+将左侧第二项（对流项） $\rho(\mathbf{u}\cdot\nabla)\mathbf{u}$展开：
 \begin{equation}
-\rho(\mathbf{v}\cdot\nabla)\mathbf{v} 
-= \rho v_j \frac{\partial v_i}{\partial x_j}
-= \frac{\partial}{\partial x_j}(\rho v_i v_j) - v_i \frac{\partial}{\partial x_j}(\rho v_j)
-= \nabla\cdot(\rho \mathbf{v}\otimes\mathbf{v}) - \mathbf{v}\,\nabla\cdot(\rho\mathbf{v})
+\rho(\mathbf{u}\cdot\nabla)\mathbf{u} 
+= \rho u_j \frac{\partial u_i}{\partial x_j}
+= \frac{\partial}{\partial x_j}(\rho u_i u_j) - u_i \frac{\partial}{\partial x_j}(\rho u_j)
+= \nabla\cdot(\rho \mathbf{u}\otimes\mathbf{u}) - \mathbf{u}\,\nabla\cdot(\rho\mathbf{u})
 \end{equation}
-其中 $\mathbf{v}\otimes\mathbf{v}$ 表示并矢。
+其中 $\mathbf{u}\otimes\mathbf{u}$ 表示并矢。
 
 代入方程\ref{eq:eulerian_general}的左侧，得到：
 \begin{equation}
-\rho \frac{\partial \mathbf{v}}{\partial t} + \rho(\mathbf{v}\cdot\nabla)\mathbf{v}
-= \frac{\partial}{\partial t}(\rho \mathbf{v}) + \nabla\cdot(\rho \mathbf{v}\otimes\mathbf{v})
+\rho \frac{\partial \mathbf{u}}{\partial t} + \rho(\mathbf{u}\cdot\nabla)\mathbf{u}
+= \frac{\partial}{\partial t}(\rho \mathbf{u}) + \nabla\cdot(\rho \mathbf{u}\otimes\mathbf{u})
 = \rho \mathbf{f} - \nabla p + \nabla \cdot \boldsymbol{\sigma}'
 \end{equation}
 
 将所有含散度的项移到右侧，整理为守恒律形式：
-\begin{equation}
-\frac{\partial}{\partial t}(\rho \mathbf{v})
-= -\nabla\cdot(\rho \mathbf{v}\otimes\mathbf{v} + p\mathbf{I} - \boldsymbol{\sigma}') + \rho \mathbf{f}
+\begin{equation}\label{eq:momentum_conservation}
+\frac{\partial}{\partial t}(\rho \mathbf{u})
+= -\nabla\cdot(\rho \mathbf{u}\otimes\mathbf{u} + p\mathbf{I} - \boldsymbol{\sigma}') + \rho \mathbf{f}
 \quad \text{或} \quad
-\frac{\partial}{\partial t}(\rho v_i) = -\frac{\partial}{\partial x_j}\left(\rho v_i v_j + p\delta_{ij} - \sigma'_{ij}\right) + \rho f_i
+\frac{\partial}{\partial t}(\rho u_i) = -\frac{\partial}{\partial x_j}\left(\rho u_i u_j + p\delta_{ij} - \sigma'_{ij}\right) + \rho f_i
 \end{equation}
 
 \begin{definition}[动量通量张量 $\boldsymbol{\Pi}$]
     \begin{equation}
-    \boldsymbol{\Pi} = \rho \mathbf{v}\otimes\mathbf{v} + p\mathbf{I} - \boldsymbol{\sigma}'
+    \boldsymbol{\Pi} = \rho \mathbf{u}\otimes\mathbf{u} + p\mathbf{I} - \boldsymbol{\sigma}'
     \quad \text{或} \quad
-    \Pi_{ij} = \rho v_i v_j + p\delta_{ij} - \sigma'_{ij}
+    \Pi_{ij} = \rho u_i u_j + p\delta_{ij} - \sigma'_{ij}
     \end{equation}
 其中各项的物理含义为：
 \begin{itemize}
-    \item $\rho v_i v_j$：由流体宏观运动携带的动量通量（对流项）；
+    \item $\rho u_i u_j$：由流体宏观运动携带的动量通量（对流项）；
     \item $p\delta_{ij}$：由压力传递的动量通量（各向同性挤压）；
     \item $-\sigma'_{ij}$：由黏性应力传递的动量通量（切向和法向黏性应力）。
 \end{itemize}
 \end{definition}
 
+积分形式的运动方程详见\ref{sec:conservation}节守恒律。
+
 \paragraph{动能守恒方程}
 不可压缩流体动能守恒方程、伯努利方程以及势流伯努利方程详见\ref{sec:conservation}节守恒律。
 
 \paragraph{气体状态方程}
-详见热力学与统计物理部分。
+详见热力学与统计物理部分。由于热力学中的$\alpha$、$\beta$ 和$\kappa_s$，
+它们的名称在工程、物理和化学教材中存在多种叫法，极易混淆。因此在本笔记中将名称规定如下表：
+\begin{table}[h]
+\centering
+\caption{三个热力学响应函数}
+\label{tab:thermo_response_coefficient}
+\begin{tabular}{c c c l}
+\toprule
+\textbf{符号} & \textbf{数学表达式} & \textbf{标准名称（本笔记使用）} & \textbf{别名} \\
+\midrule
+$\alpha$ 
+& $\displaystyle \frac{1}{V} \left(\frac{\partial V}{\partial T}\right)_p$ 
+& 体膨胀系数 (Cubic Expansion Coefficient) 
+& \makecell{热膨胀系数、体积热膨胀系数、\\ 等压热膨胀系数} \\
+
+$\beta$ 
+& $\displaystyle \frac{1}{p} \left(\frac{\partial p}{\partial T}\right)_V$ 
+& 等容压力系数 (Isochoric Pressure Coefficient) 
+& \makecell{压力系数、热压力系数}\\
+
+$\kappa_s$ 
+& $\displaystyle -\frac{1}{V} \left(\frac{\partial V}{\partial p}\right)_S$ 
+& 等熵压缩系数 (Isentropic Compressibility) 
+& \makecell{绝热压缩系数、定熵压缩率、\\ 纵向压缩系数} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{无量纲数及其无量纲方程}
-\paragraph{输运现象中的扩散与对流竞争}
+这些无量纲数源自守恒方程的无量纲化过程。
+本小节按所表征的物理问题类型对无量纲数分类，并给出各无量纲数所满足的无量纲守恒方程。
+
+\subsubsection{输运现象中的扩散与对流竞争}
 \begin{table}[h]
 \centering
 \caption{输运现象中的扩散与对流竞争}
+\renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{无量纲数} & \textbf{定义} & \textbf{物理含义} \\
@@ -315,9 +354,9 @@ M_z = 0 \quad \Rightarrow \quad \sigma_{xy} = \sigma_{yx}
 \hline
 施密特数 ($Sc$) & $\dfrac{\nu}{D_m}$ & 动量扩散率 / 质量扩散率 \\
 \hline
-普朗特数 ($Pr$) & $\dfrac{\nu}{\kappa}$ & 动量扩散率 / 热量扩散率\\
+普朗特数 ($Pr$) & $\dfrac{\nu}{\kappa}$ & 动量扩散率 / 热量扩散率 \\
 \hline
-刘易斯数 ($Le$) & $\dfrac{\kappa}{D_m}$ & 热量扩散率 / 质量扩散率\\
+刘易斯数 ($Le$) & $\dfrac{\kappa}{D_m}$ & 热量扩散率 / 质量扩散率 \\
 \hline
 佩克莱数 ($Pe$) & $\dfrac{UL}{D_m} = Re \cdot Sc$ & 质量对流率 / 质量扩散率 \\
 \hline
@@ -325,6 +364,118 @@ M_z = 0 \quad \Rightarrow \quad \sigma_{xy} = \sigma_{yx}
 \hline
 \end{tabular}
 \end{table}
+
+选取如下特征尺度：长度 $L$、速度 $U$、来流密度 $\rho_\infty$、来流温度 $T_\infty$、来流黏度 $\mu_\infty$、导热系数 $k_\infty$、等压比热 $c_{p,\infty}$、扩散系数 $D_{m,\infty}$。
+特征时间取 $L/U$，特征压力取 $\rho_\infty U^2$。定义无量纲变量：
+\begin{align*}
+    \rho^* = \frac{\rho}{\rho_\infty}, \quad 
+    \mathbf{u}^* = \frac{\mathbf{u}}{U}, \quad 
+    T^* = \frac{T}{T_\infty}, \quad 
+    p^* = \frac{p}{\rho_\infty U^2}, \quad 
+    t^* = \frac{t}{L/U}, \quad 
+    \nabla^* = L\nabla 
+\end{align*}
+物性参数的无量纲形式为 $\mu^* = \mu/\mu_\infty$，$k^* = k/k_\infty$，$c_p^* = c_p/c_{p,\infty}$，$D^* = D_m/D_{m,\infty}$，$\beta^* = \frac{\beta}{\beta_\infty}$。对理想气体，常可假设 $c_p^*=1$ 等。
+
+\paragraph{动量方程与雷诺数 $Re$}
+可压缩动量方程\ref{eq:momentum_conservation}（忽略体积力）：
+\begin{equation}
+    \frac{\partial (\rho \mathbf{u})}{\partial t} + \nabla \cdot (\rho \mathbf{u} \mathbf{u}) = -\nabla p + \nabla \cdot \boldsymbol{\sigma}' ,
+    \quad \boldsymbol{\sigma}' = \mu \left[ \nabla \mathbf{u} + (\nabla \mathbf{u})^\mathrm{T} - \frac{2}{3}(\nabla \cdot \mathbf{u})\mathbf{I} \right]
+\end{equation}
+将无量纲变量代入方程左侧：
+\begin{gather*}
+\frac{\partial (\rho^* \mathbf{u}^*)}{\partial t^*} + \nabla^* \cdot (\rho^* \mathbf{u}^* \mathbf{u}^*) = -\nabla^* p^* + \frac{1}{Re} \nabla^* \cdot \boldsymbol{\sigma}'^* 
+,\quad Re := \frac{\rho_\infty U L}{\mu_\infty}
+\end{gather*}
+
+
+\paragraph{能量方程与热佩克莱数 $Pe_\theta$ 及普朗特数 $Pr$}
+对于非理想气体或一般简单流体，可以从通用的温度形式能量方程出发：
+\begin{equation}
+    \rho c_p \left( \frac{\partial T}{\partial t} + \mathbf{u}\cdot\nabla T \right) 
+    = \nabla \cdot (k \nabla T) + \beta T \left( \frac{\partial p}{\partial t} + \mathbf{u}\cdot\nabla p \right) + \Phi ,
+    \label{eq:energy_general}
+\end{equation}
+式中 $\beta = -\frac{1}{\rho}\left(\frac{\partial \rho}{\partial T}\right)_p$ 为热膨胀系数，对于理想气体，$\beta = 1/T$；
+耗散函数 $\Phi = \boldsymbol{\sigma}' : \nabla \mathbf{u}$。
+
+将无量纲变量代入方程 \eqref{eq:energy_general} 各项，乘以特征因子 $\dfrac{L}{\rho_\infty c_{p,\infty} T_\infty U}$，整理得到：
+\begin{equation}
+    \rho^* c_p^* \left( \frac{\partial T^*}{\partial t^*} + \mathbf{u}^* \cdot \nabla^* T^* \right) 
+    = \frac{1}{Re\,Pr} \nabla^* \cdot (k^* \nabla^* T^*)
+    + B\,Ec \left( \frac{\partial p^*}{\partial t^*} + \mathbf{u}^* \cdot \nabla^* p^* \right) 
+    + \frac{Ec}{Re} \Phi^*
+    \label{eq:energy_nondim_general}
+\end{equation}
+其中：
+\begin{align*}
+    Re = \frac{\rho_\infty U L}{\mu_\infty}, \quad 
+    Pr = \frac{\mu_\infty c_{p,\infty}}{k_\infty}, \quad 
+    Ec = \frac{U^2}{c_{p,\infty} T_\infty},\quad
+    B = \beta_\infty T_\infty
+\end{align*}
+
+对于理想气体，$c_{p,\infty} = \dfrac{\gamma R}{\gamma-1}$，音速 $c_\infty = \sqrt{\gamma R T_\infty}$，故
+\begin{equation}
+    Ec = \frac{U^2}{\frac{\gamma R}{\gamma-1} T_\infty} = (\gamma-1) \frac{U^2}{\gamma R T_\infty} = (\gamma-1) Ma^2
+\end{equation}
+其中 $Ma \equiv U/c_\infty$ 为马赫数。因此能量方程中自然出现了由 $Ma$ 和 $Pr$ 控制的各项。
+
+\begin{derivative}
+
+    左侧：
+\begin{align*}
+    \rho c_p \frac{\partial T}{\partial t} &= \rho_\infty c_{p,\infty} \rho^* c_p^* \frac{T_\infty}{L/U} \frac{\partial T^*}{\partial t^*} 
+    = \frac{\rho_\infty c_{p,\infty} T_\infty U}{L} \rho^* c_p^* \frac{\partial T^*}{\partial t^*} \\
+    \rho c_p \mathbf{u}\cdot\nabla T &= \rho_\infty c_{p,\infty} \rho^* c_p^* U \frac{T_\infty}{L} \mathbf{u}^* \cdot \nabla^* T^*
+    = \frac{\rho_\infty c_{p,\infty} T_\infty U}{L} \rho^* c_p^* \mathbf{u}^* \cdot \nabla^* T^* 
+\end{align*}
+右侧热传导项：
+\begin{equation*}
+    \nabla \cdot (k \nabla T) = \frac{1}{L} \nabla^* \cdot \left( k_\infty k^* \frac{T_\infty}{L} \nabla^* T^* \right) 
+    = \frac{k_\infty T_\infty}{L^2} \nabla^* \cdot (k^* \nabla^* T^*) 
+\end{equation*}
+压力功项：
+\begin{align*}
+    \beta T \left( \frac{\partial p}{\partial t} + \mathbf{u}\cdot\nabla p \right) 
+    &= (\beta_\infty \beta^*) (T_\infty T^*) \cdot \frac{\rho_\infty U^3}{L} \left( \frac{\partial p^*}{\partial t^*} + \mathbf{u}^* \cdot \nabla^* p^* \right) 
+    \\&= \frac{\rho_\infty U^3 \beta_\infty T_\infty}{L} \, \beta^* T^* \left( \frac{\partial p^*}{\partial t^*} + \mathbf{u}^* \cdot \nabla^* p^* \right)
+\end{align*}
+\begin{align*}
+    \frac{\partial p}{\partial t} + \mathbf{u}\cdot\nabla p 
+    = \frac{\rho_\infty U^2}{L/U} \frac{\partial p^*}{\partial t^*} + U \mathbf{u}^* \cdot \frac{1}{L} \rho_\infty U^2 \nabla^* p^* 
+    = \frac{\rho_\infty U^3}{L} \left( \frac{\partial p^*}{\partial t^*} + \mathbf{u}^* \cdot \nabla^* p^* \right) 
+\end{align*}
+耗散项：
+\begin{equation*}
+    \Phi = \boldsymbol{\sigma}' : \nabla \mathbf{u} = \frac{\mu_\infty U^2}{L^2} \boldsymbol{\sigma}'^* : \nabla^* \mathbf{u}^* 
+\end{equation*}
+\end{derivative}
+
+
+\paragraph{组分方程与佩克莱数 $Pe$ 及施密特数 $Sc$}
+原始组分输运方程为（无化学反应）：
+\begin{equation}
+\frac{\partial C}{\partial t} + \mathbf{u} \cdot \nabla C = D_m \nabla^2 C
+\end{equation}
+引入无量纲浓度 $c = (C - C_0)/\Delta C$，无量纲化后得：
+\begin{equation}
+\frac{\partial c}{\partial t^*} + \mathbf{u}^* \cdot \nabla^* c = \frac{1}{Pe} \nabla^{*2} c
+\end{equation}
+其中 $Pe = UL/D_m$ 为佩克莱数，表征质量对流与质量扩散之比。利用 $Pe = Re \cdot Sc$，方程可改写为：
+\begin{equation}
+\frac{\partial c}{\partial t^*} + \mathbf{u}^* \cdot \nabla^* c = \frac{1}{Re \cdot Sc} \nabla^{*2} c
+\end{equation}
+此形式将施密特数 $Sc = \nu/D_m$ 显式引入，体现动量扩散与质量扩散之比。
+
+\paragraph{刘易斯数 $Le$ 的导出}
+刘易斯数 $Le = \kappa/D_m = Sc/Pr$ 是纯物性参数之比，连接温度场与浓度场的桥梁。
+比较能量方程和组分方程的无量纲形式可以看出，当 $Le = 1$ 时，两者具有相同的扩散系数，温度场和浓度场在相同边界条件下具有相似的分布规律。
+
+
+
+
 
 
 

@@ -14,3 +14,4 @@
 \contentsline {paragraph}{能量方程与热佩克莱数 $Pe_\mittheta $ 及普朗特数 $Pr$}{6}{paragraph*.9}%
 \contentsline {paragraph}{组分方程与佩克莱数 $Pe$ 及施密特数 $Sc$}{7}{paragraph*.10}%
 \contentsline {paragraph}{刘易斯数 $Le$ 的导出}{7}{paragraph*.11}%
+\contentsline {subsubsection}{非定常与波动效应}{7}{subsubsection*.12}%

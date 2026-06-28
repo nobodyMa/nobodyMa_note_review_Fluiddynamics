@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.24)  26 JUN 2026 18:37
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.5.24)  28 JUN 2026 21:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1109,7 +1109,34 @@ Overfull \hbox (20.97942pt too wide) in paragraph at lines 318--338
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5] [6]) [7] (./我掌握的流体力学.aux (./config/cover.aux) (./chap1/chap.aux))
+[5] [6] [7] [8] [9]
+
+LaTeX Warning: Reference `eq:young_laplace' on page 10 undefined on input line 617.
+
+
+LaTeX Warning: Reference `eq:hydrostatic' on page 10 undefined on input line 623.
+
+
+LaTeX Warning: Reference `eq:young_laplace' on page 10 undefined on input line 651.
+
+
+LaTeX Warning: Reference `eq:stokes_gravity' on page 10 undefined on input line 655.
+
+[10]
+
+LaTeX Warning: Reference `eq:young_laplace' on page 11 undefined on input line 692.
+
+
+LaTeX Warning: Reference `eq:euler_novis' on page 11 undefined on input line 700.
+
+[11]
+
+LaTeX Warning: Reference `eq:euler_nondim' on page 12 undefined on input line 718.
+
+
+LaTeX Warning: Reference `eq:young_laplace_nondim_We' on page 12 undefined on input line 718.
+
+) [12] (./我掌握的流体力学.aux (./config/cover.aux) (./chap1/chap.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2022/07/14>
@@ -1118,16 +1145,19 @@ L3 programming layer <2022/07/14>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `我掌握的流体力学.out' has not changed.
 (rerunfilecheck)             Checksum: D054C8607AD8199D531FFEB7288B9D67;653.
  ) 
 Here is how much of TeX's memory you used:
- 35605 strings out of 476691
- 741806 string characters out of 5799507
- 1951842 words of memory out of 5000000
- 57062 multiletter control sequences out of 15000+600000
+ 35618 strings out of 476691
+ 742076 string characters out of 5799507
+ 1953842 words of memory out of 5000000
+ 57075 multiletter control sequences out of 15000+600000
  565342 words of font info for 101 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  93i,16n,114p,541b,544s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 我掌握的流体力学.pdf (9 pages).
+Output written on 我掌握的流体力学.pdf (14 pages).

@@ -14,4 +14,10 @@
 \contentsline {paragraph}{能量方程与热佩克莱数 $Pe_\mittheta $ 及普朗特数 $Pr$}{6}{paragraph*.9}%
 \contentsline {paragraph}{组分方程与佩克莱数 $Pe$ 及施密特数 $Sc$}{7}{paragraph*.10}%
 \contentsline {paragraph}{刘易斯数 $Le$ 的导出}{7}{paragraph*.11}%
-\contentsline {subsubsection}{非定常与波动效应}{7}{subsubsection*.12}%
+\contentsline {subsubsection}{非定常与波动效应}{8}{subsubsection*.12}%
+\contentsline {paragraph}{不可压缩非定常动量方程与斯特劳哈尔数 $Sr$ }{8}{paragraph*.13}%
+\contentsline {paragraph}{斯托克斯数 $St$ 与振荡黏性流动}{8}{paragraph*.14}%
+\contentsline {subsubsection}{界面与毛细效应}{9}{subsubsection*.15}%
+\contentsline {paragraph}{邦德数 $Bo$ 与重力－表面张力平衡}{10}{paragraph*.16}%
+\contentsline {paragraph}{毛细数 $Ca$ 与低雷诺数湿润动力学}{10}{paragraph*.17}%
+\contentsline {paragraph}{韦伯数 $We$ 与惯性主导的界面变形}{11}{paragraph*.18}%

@@ -179,7 +179,7 @@ M_z = 0 \quad \Rightarrow \quad \sigma_{xy} = \sigma_{yx}
 \end{aligned}
 \]
 
-令剪切黏度 $\mu \equiv A$，体积黏度 $\lambda \equiv B + A/3$，则：
+令剪切黏度 $\mu := A$，体积黏度 $\lambda := B + A/3$，则：
 \[
 \sigma'_{ij} = \mu \left(2e_{ij} - \frac{2}{3} \delta_{ij} e_{ll}\right) + \lambda \, \delta_{ij}e_{ll}
 \]
@@ -405,7 +405,7 @@ $\kappa_s$
 \end{note}
 
 
-将无量纲变量代入方程 \eqref{eq:energy_general} 各项，乘以特征因子 $\dfrac{L}{\rho_\infty c_{p,\infty} T_\infty U}$，整理得到：
+将无量纲变量代入方程 \ref{eq:energy_general} 各项，乘以特征因子 $\dfrac{L}{\rho_\infty c_{p,\infty} T_\infty U}$，整理得到：
 \begin{equation}
     \rho^* c_p^* \left( \frac{\partial T^*}{\partial t^*} + \mathbf{u}^* \cdot \nabla^* T^* \right) 
     = \frac{1}{Re\,Pr} \nabla^* \cdot (k^* \nabla^* T^*)
@@ -425,7 +425,7 @@ $\kappa_s$
 \begin{equation}
     Ec = \frac{U^2}{\frac{\gamma R}{\gamma-1} T_\infty} = (\gamma-1) \frac{U^2}{\gamma R T_\infty} = (\gamma-1) Ma^2
 \end{equation}
-其中 $Ma \equiv U/c_\infty$ 为马赫数。因此能量方程中自然出现了由 $Ma$ 和 $Pr$ 控制的各项。
+其中 $Ma := U/c_\infty$ 为马赫数。因此能量方程中自然出现了由 $Ma$ 和 $Pr$ 控制的各项。
 
 \begin{derivative}
 
@@ -460,7 +460,7 @@ $\kappa_s$
 
 
 \paragraph{组分方程与佩克莱数 $Pe$ 及施密特数 $Sc$}
-组分输运方程为（无化学反应）：
+组分输运方程为（\textcolor{red}{无化学反应}）：
 \begin{equation}
 \frac{\partial C}{\partial t} + \mathbf{u} \cdot \nabla C = D_m \nabla^2 C
 \end{equation}
@@ -478,8 +478,248 @@ $\kappa_s$
 刘易斯数 $Le = \kappa/D_m = Sc/Pr$ 是纯物性参数之比，连接温度场与浓度场的桥梁。
 比较能量方程和组分方程的无量纲形式可以看出，当 $Le = 1$ 时，两者具有相同的扩散系数，温度场和浓度场在相同边界条件下具有相似的分布规律。
 
+
 \subsubsection{非定常与波动效应}
 
+选取如下特征尺度：对于斯特劳哈尔数，特征时间取 $1/f$（$f$ 为涡脱落特征频率），特征压力取 $\rho_\infty U^2$；对于斯托克斯数，特征时间取 $1/\omega$（$\omega$ 为振荡角频率），因黏性主导，特征压力取 $\mu_\infty U/L$。定义无量纲变量：
+\begin{align*}
+    \mathbf{u}^* = \frac{\mathbf{u}}{U}, \quad 
+    \nabla^* = L\nabla ,\quad 
+    \rho^* = \frac{\rho}{\rho_\infty}, \quad 
+    \mu^* = \frac{\mu}{\mu_\infty}.
+\end{align*}
+对于斯特劳哈尔数情形，$t^* = t f$，$p^* = \dfrac{p}{\rho_\infty U^2}$；对于斯托克斯数情形，$t^* = \omega t$，$p^* = \dfrac{p}{\mu_\infty U/L}$。
+
+\begin{table}[h]
+\centering
+\caption{非定常与波动效应中的无量纲数}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{无量纲数} & \textbf{定义} & \textbf{物理含义} \\
+\hline
+斯特劳哈尔数 ($Sr$) & $\dfrac{fL}{U}$ & 局部非定常惯性力 / 对流惯性力\\
+\hline
+斯托克斯数 ($St$) & $\dfrac{\omega L^2}{\nu} = \dfrac{2\pi L^2}{\nu T}$
+ & \makecell{黏性扩散特征时间 / 流动参数变化特征时间；\\流动非定常项强度 / 黏度扩散项强度} \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{不可压缩非定常动量方程与斯特劳哈尔数 $Sr$ }
+不可压缩 Navier--Stokes 方程\ref{eq:ns_incompressible}（忽略体积力）为
+\begin{equation}
+    \rho \left( \frac{\partial \mathbf{u}}{\partial t} + \mathbf{u}\cdot\nabla\mathbf{u} \right) = -\nabla p + \mu \nabla^2 \mathbf{u}
+\end{equation}
+将无量纲变量代入，两边除以 $\rho_\infty U^2/L$：
+\begin{gather*}
+    \rho_\infty \rho^* \left(U f \frac{\partial \mathbf{u}^*}{\partial t^*}+ \frac{U^2}{L} \mathbf{u}^*\cdot\nabla^*\mathbf{u}^*
+\right)=-\frac{\rho_\infty U^2}{L} \nabla^* p^*+ \mu_\infty \mu^* \frac{U}{L^2} \nabla^{*2} \mathbf{u}^*
+\\
+    \frac{fL}{U} \rho^* \frac{\partial \mathbf{u}^*}{\partial t^*} + \rho^* \mathbf{u}^*\cdot\nabla^*\mathbf{u}^* = -\nabla^* p^* + \frac{\mu^*}{Re} \nabla^{*2}\mathbf{u}^*,
+\end{gather*}
+\begin{equation}
+    Sr \frac{\partial \mathbf{u}^*}{\partial t^*} + \mathbf{u}^*\cdot\nabla^*\mathbf{u}^* = -\nabla^* p^* + \frac{1}{Re} \nabla^{*2}\mathbf{u}^*.
+    \label{eq:ns_nondim_Sr}
+\end{equation}
+其中 $Re := \dfrac{\rho_\infty U L}{\mu_\infty}$，\(Sr := \dfrac{fL}{U}\)。对于常密度流动，$\rho^* = 1$。
+
+$Sr$不是很依赖特征速度\(U\)，量级大约为\(1\)，因此涡脱落的频率\(f\)正比于特征速度\(U\)。
+同时当 $Sr \sim 1$ 时，局部非定常惯性力与对流惯性力量级相当，涡脱落频率由 $Sr$ 决定。
+若 $Sr \ll 1$，流动可视为准定常，时间导数项退化为零，恢复到定常 N--S 方程的无量纲形式。
+
+\paragraph{斯托克斯数 $St$ 与振荡黏性流动}
+
+当流动由高频小振幅振荡驱动时，对流项 $\mathbf{u}\cdot\nabla\mathbf{u}$ 相比非定常项可忽略，方程\ref{eq:ns_incompressible} 退化为线性的 Stokes 方程：
+\begin{equation}
+    \rho \frac{\partial \mathbf{u}}{\partial t} = -\nabla p + \mu \nabla^2 \mathbf{u}.
+    \label{eq:stokes}
+\end{equation}
+将无量纲变量代入，两边除以 $\mu_\infty U/L^2$：
+\begin{gather*}
+    \rho_\infty \rho^* U \omega \frac{\partial \mathbf{u}^*}{\partial t^*} = -\frac{\mu_\infty U}{L^2} \nabla^* p^*
+    +\mu_\infty \mu^* \frac{U}{L^2} \nabla^{*2}\mathbf{u}^*\\
+    \frac{\rho_\infty \omega L^2}{\mu_\infty} \rho^* \frac{\partial \mathbf{u}^*}{\partial t^*} = -\nabla^* p^* + \mu^* \nabla^{*2}\mathbf{u}^*\\
+        \frac{\rho_\infty \omega L^2}{\nu_\infty} \rho^* \frac{\partial \mathbf{u}^*}{\partial t^*} = -\nabla^* p^* + \mu^* \nabla^{*2}\mathbf{u}^*\\
+\end{gather*}
+\begin{equation}
+    St \frac{\partial \mathbf{u}^*}{\partial t^*} = -\nabla^* p^* + \nabla^{*2}\mathbf{u}^*.
+    \label{eq:unsteady_stokes_nondim}
+\end{equation}
+其中\(St := \dfrac{\omega L^2}{\nu} = \dfrac{2\pi L^2}{\nu T}\)，$\nu = \mu/\rho$ 为运动黏度，$T = 2\pi/\omega$ 为振荡周期。对于常物性流体，$\rho^* = 1$，$\mu^* = 1$，$\nu = 1$。
+
+$St$ 的物理意义为黏性扩散特征时间 $\tau_\nu = L^2/\nu$ 与流动参数变化特征时间 $\tau_t = 1/\omega$ 之比：
+\begin{equation}
+    St = \frac{L^2/\nu}{1/\omega} = \frac{\tau_\nu}{\tau_t}.
+\end{equation}
+当 $St \ll 1$（$\tau_\nu \ll \tau_t$），黏性扩散瞬间完成，非定常项可忽略，流动准定常，此时方程\ref{eq:unsteady_stokes_nondim} 退化为定常 Stokes 方程
+\begin{equation}
+    0 = -\nabla^* p^* + \nabla^{*2}\mathbf{u}^*.
+\end{equation}
+当 $St \gg 1$（$\tau_\nu \gg \tau_t$），涡量扩散仅能穿透有限深度，形成振荡边界层（Stokes 层），其穿透深度量级为
+\begin{equation}
+    \delta \sim \frac{L}{\sqrt{St}} \sim \sqrt{\frac{\nu}{\omega}}.
+\end{equation}
+在 $St \gg 1$ 的极限下，核心区流动近似无黏有势，黏性效应局限于近壁面的 Stokes 层内。
+
+
+\subsubsection{界面与毛细效应}
+\begin{table}[h]
+\centering
+\caption{界面与毛细效应中的无量纲数}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{无量纲数} & \textbf{定义} & \textbf{物理含义（比值）} \\
+\hline
+邦德数 ($Bo$) & $\dfrac{\Delta\rho \, g L^2}{\gamma}$ & 重力 / 表面张力\\
+\hline
+毛细数 ($Ca$) & $\dfrac{\eta U}{\gamma}$ & 黏性力 / 表面张力 \\
+\hline
+韦伯数 ($We$) & $\dfrac{\rho U^2 L}{\gamma}$ & 惯性力 / 表面张力 \\
+\hline
+\end{tabular}
+\end{table}
+
+考虑不可压缩流动，控制方程为连续性方程\ref{eq:continuity_incompressible} 和欧拉方程\ref{eq:eulerian_general}，
+并取牛顿本构\ref{eq:constitutive_newtonian}。在气液界面处，法向应力满足 Young--Laplace 条件（忽略表面张力梯度）：
+\begin{equation}
+    -p + \boldsymbol{\tau}_{nn} = -\gamma (\nabla \cdot \mathbf{n})
+    \label{eq:young_laplace}
+\end{equation}
+其中 $\mathbf{n}$ 为界面单位法向量（指向气相），$\nabla \cdot \mathbf{n}$ 为界面平均曲率（主曲率之和）。重力作为体积力 $\mathbf{f} = \mathbf{g}$ 计入。
+
+特征尺度选取：
+长度尺度 $L$（液滴半径、射流直径或毛细长度量级的特征尺度），速度尺度 $U$，压力尺度则视主导平衡的因素选取：
+\begin{itemize}
+    \item 邦德数源于静力学平衡，压力尺度取 $\Delta\rho g L$ 或 $\gamma/L$；
+    \item 毛细数源于黏性－表面张力竞争，压力尺度取 $\mu U/L$（黏性应力尺度）；
+    \item 韦伯数源于惯性－表面张力竞争，压力尺度取 $\rho U^2$。
+\end{itemize}
+% 无特殊说明时，物性参数均视为常数，其无量纲形式为 $1$。
+
+\paragraph{重力--表面张力平衡方程与邦德数 $Bo$}
+
+忽略流动（$U=0$），动量方程\ref{eq:eulerian_general} 退化为静力学平衡
+\[
+0 = \rho \mathbf{g} - \nabla p + \nabla \cdot \boldsymbol{\tau},
+\]
+在静止液体中 $\boldsymbol{\tau}=0$，故：
+\begin{equation}
+    \nabla p = \rho \mathbf{g}
+    \label{eq:hydrostatic}
+\end{equation}
+界面条件\ref{eq:young_laplace} 成为 $p - p_{g} = \gamma (\nabla \cdot \mathbf{n})$。
+
+选取特征长度 $L$（如液滴半径），密度差 $\Delta\rho = \rho_{f} - \rho_{g}$，
+压力尺度用 $\Delta\rho g L$ 或 $\gamma/L$。引入无量纲变量
+\[
+\mathbf{x}^* = \frac{\mathbf{x}}{L},\quad p^* = \frac{p}{\Delta\rho g L},\quad \nabla^* = L\nabla.
+\]
+则静力学方程\ref{eq:hydrostatic} 无量纲化为
+\begin{equation}
+    \nabla^* p^* = \hat{\mathbf{g}}^*,
+    \label{eq:hydrostatic_nondim}
+\end{equation}
+其中 $\hat{\mathbf{g}}^*$ 为重力方向的单位矢量。界面条件化为
+\[
+p^* - p_{\text{gas}}^* = \frac{\gamma}{\Delta\rho g L^2} (\nabla^* \cdot \mathbf{n}^*).
+\]
+定义\textbf{邦德数}
+\begin{equation}
+    Bo \equiv \frac{\Delta\rho \, g L^2}{\gamma},
+\end{equation}
+则界面条件写为
+\begin{equation}
+    p^* - p_{\text{gas}}^* = \frac{1}{Bo} (\nabla^* \cdot \mathbf{n}^*).
+    \label{eq:young_laplace_nondim_Bo}
+\end{equation}
+当 $Bo \gg 1$，$1/Bo \to 0$，压力跳跃可忽略，界面形状由重力控制（如平液面）；当 $Bo \ll 1$，表面张力主导，界面趋向于常曲率曲面（如球冠液滴）。$Bo = 1$ 给出了毛细长度 $l_c = \sqrt{\gamma/(\Delta\rho g)}$。
+
+%-------------------- 毛细数 --------------------
+\paragraph{毛细数 $Ca$ 与低雷诺数湿润动力学}
+
+在低速黏性主导的流动中，惯性项可略，方程\ref{eq:eulerian_general} 结合\ref{eq:constitutive_newtonian} 及不可压缩条件化为 Stokes 方程。保留重力作为体力，有
+\begin{equation}
+    \mathbf{0} = -\nabla p + \eta \nabla^2 \mathbf{u} + \rho \mathbf{g}.
+    \label{eq:stokes_gravity}
+\end{equation}
+界面条件仍为\ref{eq:young_laplace}。特征尺度：长度 $L$，速度 $U$，压力取黏性尺度 $\eta U/L$。定义无量纲变量
+\[
+\mathbf{u}^* = \frac{\mathbf{u}}{U},\quad p^* = \frac{p}{\eta U/L},\quad \nabla^* = L\nabla,\quad t^* = \frac{t}{L/U}.
+\]
+代入\ref{eq:stokes_gravity} 并除以 $\eta U/L^2$，得
+\begin{equation}
+    \mathbf{0} = -\nabla^* p^* + \nabla^{*2} \mathbf{u}^* + \frac{\rho g L^2}{\eta U} \hat{\mathbf{g}}^*.
+\end{equation}
+右边重力项系数可重组为 $(\Delta\rho g L^2/\gamma) \cdot (\gamma/(\eta U)) = Bo/Ca$（若使用 $\Delta\rho$）。若重力可忽略（如微小尺度），则进一步简化为 $\mathbf{0} = -\nabla^* p^* + \nabla^{*2} \mathbf{u}^*$。
+
+将界面条件无量纲化。法向应力跳跃：
+\[
+- p + 2\eta \frac{\partial u_n}{\partial n} = -\gamma (\nabla \cdot \mathbf{n}).
+\]
+代入无量纲变量：
+\[
+-\frac{\eta U}{L} p^* + \frac{\eta U}{L} \cdot 2 \frac{\partial u_n^*}{\partial n^*} = -\frac{\gamma}{L} (\nabla^* \cdot \mathbf{n}^*).
+\]
+两边除以 $\eta U/L$，得
+\[
+- p^* + 2\frac{\partial u_n^*}{\partial n^*} = -\frac{\gamma}{\eta U} (\nabla^* \cdot \mathbf{n}^*).
+\]
+定义\textbf{毛细数}
+\begin{equation}
+    Ca \equiv \frac{\eta U}{\gamma},
+\end{equation}
+则界面法向应力条件化为
+\begin{equation}
+    -p^* + 2\frac{\partial u_n^*}{\partial n^*} = -\frac{1}{Ca} (\nabla^* \cdot \mathbf{n}^*).
+    \label{eq:normal_stress_ca}
+\end{equation}
+切向应力条件（忽略 Marangoni 效应时，$\boldsymbol{\tau}_{nt}^*=0$）自动满足。当 $Ca \ll 1$，表面张力极强，界面变形极小，接触线运动受表面张力控制，例如 Tanner 定律 $\theta^3 \propto Ca$；当 $Ca \gg 1$，黏性力主导，界面可被大幅拉伸。
+
+%-------------------- 韦伯数 --------------------
+\paragraph{韦伯数 $We$ 与惯性主导的界面变形}
+
+在高速射流、液滴撞击等问题中，惯性力与表面张力竞争，黏性往往次要。忽略黏性和重力，方程\ref{eq:eulerian_general} 退化为 Euler 方程\ref{eq:euler_incompressible}：
+\begin{equation}
+    \rho \left( \frac{\partial \mathbf{u}}{\partial t} + \mathbf{u}\cdot\nabla\mathbf{u} \right) = -\nabla p.
+    \label{eq:euler_novis}
+\end{equation}
+界面条件\ref{eq:young_laplace} 中黏性法向应力消失，成为
+\[
+p - p_{\text{gas}} = \gamma (\nabla \cdot \mathbf{n}).
+\]
+特征尺度：长度 $L$，速度 $U$，压力取惯性尺度 $\rho U^2$。无量纲变量：
+\[
+\mathbf{u}^* = \frac{\mathbf{u}}{U},\quad p^* = \frac{p}{\rho U^2},\quad t^* = \frac{t}{L/U},\quad \nabla^* = L\nabla.
+\]
+代入\ref{eq:euler_novis}，直接得
+\begin{equation}
+    \frac{\partial \mathbf{u}^*}{\partial t^*} + \mathbf{u}^*\cdot\nabla^*\mathbf{u}^* = -\nabla^* p^*.
+    \label{eq:euler_nondim}
+\end{equation}
+界面条件无量纲化：
+\[
+\rho U^2 p^* - p_{\text{gas}} = \frac{\gamma}{L} (\nabla^* \cdot \mathbf{n}^*).
+\]
+定义\textbf{韦伯数}
+\begin{equation}
+    We \equiv \frac{\rho U^2 L}{\gamma},
+\end{equation}
+则界面条件化为
+\begin{equation}
+    p^* - p_{\text{gas}}^* = \frac{1}{We} (\nabla^* \cdot \mathbf{n}^*).
+    \label{eq:young_laplace_nondim_We}
+\end{equation}
+当 $We \ll 1$，表面张力刚性化界面，流动近似为绕刚体流动；当 $We \gg 1$，惯性力足以克服表面张力，导致液滴破碎、雾化等现象。Rayleigh--Plateau 不稳定性分析中，由\ref{eq:euler_nondim} 和界面条件\ref{eq:young_laplace_nondim_We} 的线性化，可得无量纲增长率 $\sigma^* = \sigma \sqrt{\rho L^3/\gamma}$ 正是以 $We$ 为基本参数。
+
+\medskip
+\noindent\textbf{三者的关联}\\
+三个数可通过组合相互转化：$We = Re \cdot Ca$，其中 $Re = \rho U L/\eta$。在许多实际问题中，它们同时出现，共同决定界面动力学行为。完整的无量纲界面条件可写为
+\[
+- p^* + \frac{1}{Re} \tau_{nn}^* = -\frac{1}{We} (\nabla^* \cdot \mathbf{n}^*),
+\]
+其中各项的相对重要性由 $Re$ 和 $We$（或 $Ca$）决定。
 
 
 
